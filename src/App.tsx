@@ -109,7 +109,7 @@ function App() {
           onExit={handleCashExit}
         />
       )}
-    </>
+    </div>
   );
 }
 
