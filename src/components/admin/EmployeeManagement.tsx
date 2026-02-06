@@ -160,7 +160,7 @@ export default function EmployeeManagement() {
   return (
     <div className="p-6 max-w-7xl mx-auto">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold text-slate-800">Gestión de Empleados</h2>
+        <h2 className="text-2xl font-bold text-slate-800 dark:text-white">Gestión de Empleados</h2>
         {!showForm && (
           <button
             onClick={() => setShowForm(true)}
@@ -173,13 +173,13 @@ export default function EmployeeManagement() {
       </div>
 
       {showForm && (
-        <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
-          <h3 className="text-xl font-bold text-slate-800 mb-4">
+        <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 mb-6 border border-slate-100 dark:border-slate-700">
+          <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-4">
             {editingEmployee ? 'Editar Empleado' : 'Nuevo Empleado'}
           </h3>
           <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-semibold text-slate-700 mb-2">
+              <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
                 Nombre Completo *
               </label>
               <input
@@ -187,22 +187,22 @@ export default function EmployeeManagement() {
                 required
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full px-4 py-2 border-2 border-slate-300 rounded-lg focus:border-blue-500 focus:outline-none"
+                className="w-full px-4 py-2 border-2 border-slate-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg focus:border-blue-500 focus:outline-none"
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-slate-700 mb-2">
+              <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
                 Puesto
               </label>
               <input
                 type="text"
                 value={formData.position}
                 onChange={(e) => setFormData({ ...formData, position: e.target.value })}
-                className="w-full px-4 py-2 border-2 border-slate-300 rounded-lg focus:border-blue-500 focus:outline-none"
+                className="w-full px-4 py-2 border-2 border-slate-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg focus:border-blue-500 focus:outline-none"
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-slate-700 mb-2">
+              <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
                 PIN (4 dígitos) *
               </label>
               <input
@@ -212,18 +212,18 @@ export default function EmployeeManagement() {
                 pattern="[0-9]{4}"
                 value={formData.pin}
                 onChange={(e) => setFormData({ ...formData, pin: e.target.value })}
-                className="w-full px-4 py-2 border-2 border-slate-300 rounded-lg focus:border-blue-500 focus:outline-none"
+                className="w-full px-4 py-2 border-2 border-slate-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg focus:border-blue-500 focus:outline-none"
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-slate-700 mb-2">
+              <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
                 Sucursal *
               </label>
               <select
                 required
                 value={formData.branch_id}
                 onChange={(e) => setFormData({ ...formData, branch_id: e.target.value })}
-                className="w-full px-4 py-2 border-2 border-slate-300 rounded-lg focus:border-blue-500 focus:outline-none"
+                className="w-full px-4 py-2 border-2 border-slate-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg focus:border-blue-500 focus:outline-none"
               >
                 <option value="">Seleccionar...</option>
                 {branches.map(branch => (
@@ -232,21 +232,21 @@ export default function EmployeeManagement() {
               </select>
             </div>
             <div>
-              <label className="block text-sm font-semibold text-slate-700 mb-2">
+              <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
                 Tipo de Pago *
               </label>
               <select
                 required
                 value={formData.payment_type}
                 onChange={(e) => setFormData({ ...formData, payment_type: e.target.value as 'daily' | 'weekly' })}
-                className="w-full px-4 py-2 border-2 border-slate-300 rounded-lg focus:border-blue-500 focus:outline-none"
+                className="w-full px-4 py-2 border-2 border-slate-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg focus:border-blue-500 focus:outline-none"
               >
                 <option value="daily">Diario</option>
                 <option value="weekly">Semanal</option>
               </select>
             </div>
             <div>
-              <label className="block text-sm font-semibold text-slate-700 mb-2">
+              <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
                 Sueldo Base *
               </label>
               <input
@@ -256,7 +256,7 @@ export default function EmployeeManagement() {
                 min="0"
                 value={formData.base_salary}
                 onChange={(e) => setFormData({ ...formData, base_salary: e.target.value })}
-                className="w-full px-4 py-2 border-2 border-slate-300 rounded-lg focus:border-blue-500 focus:outline-none"
+                className="w-full px-4 py-2 border-2 border-slate-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg focus:border-blue-500 focus:outline-none"
               />
             </div>
             <div className="col-span-2 flex gap-3">
@@ -270,7 +270,7 @@ export default function EmployeeManagement() {
               <button
                 type="button"
                 onClick={handleCancel}
-                className="px-6 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-lg font-semibold transition-colors"
+                className="px-6 py-2 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-300 rounded-lg font-semibold transition-colors"
               >
                 Cancelar
               </button>
@@ -281,7 +281,7 @@ export default function EmployeeManagement() {
 
       {!showForm && (
         <>
-          <div className="bg-white rounded-xl shadow-md p-4 mb-6">
+          <div className="bg-white dark:bg-slate-800 rounded-xl shadow-md p-4 mb-6 border border-slate-100 dark:border-slate-700">
             <div className="grid grid-cols-2 gap-4">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5" />
@@ -290,13 +290,13 @@ export default function EmployeeManagement() {
                   placeholder="Buscar empleado..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 border-2 border-slate-300 rounded-lg focus:border-blue-500 focus:outline-none"
+                  className="w-full pl-10 pr-4 py-2 border-2 border-slate-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg focus:border-blue-500 focus:outline-none"
                 />
               </div>
               <select
                 value={filterBranch}
                 onChange={(e) => setFilterBranch(e.target.value)}
-                className="px-4 py-2 border-2 border-slate-300 rounded-lg focus:border-blue-500 focus:outline-none"
+                className="px-4 py-2 border-2 border-slate-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg focus:border-blue-500 focus:outline-none"
               >
                 <option value="all">Todas las sucursales</option>
                 {branches.map(branch => (
@@ -308,39 +308,39 @@ export default function EmployeeManagement() {
 
           <div className="grid gap-4">
             {filteredEmployees.map(employee => (
-              <div key={employee.id} className="bg-white rounded-xl shadow-md p-6 flex justify-between items-center">
+              <div key={employee.id} className="bg-white dark:bg-slate-800 rounded-xl shadow-md p-6 flex justify-between items-center border border-slate-100 dark:border-slate-700">
                 <div className="flex-1">
                   <div className="flex items-center gap-4 mb-2">
-                    <h3 className="text-xl font-bold text-slate-800">{employee.name}</h3>
-                    <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold">
+                    <h3 className="text-xl font-bold text-slate-800 dark:text-white">{employee.name}</h3>
+                    <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-full text-sm font-semibold">
                       {employee.branches?.name}
                     </span>
                   </div>
-                  <div className="grid grid-cols-4 gap-4 text-sm text-slate-600">
+                  <div className="grid grid-cols-4 gap-4 text-sm text-slate-600 dark:text-slate-400">
                     <div>
-                      <span className="font-semibold">Puesto:</span> {employee.position || 'N/A'}
+                      <span className="font-semibold text-slate-800 dark:text-slate-200">Puesto:</span> {employee.position || 'N/A'}
                     </div>
                     <div>
-                      <span className="font-semibold">PIN:</span> {employee.pin}
+                      <span className="font-semibold text-slate-800 dark:text-slate-200">PIN:</span> {employee.pin}
                     </div>
                     <div>
-                      <span className="font-semibold">Tipo:</span> {employee.payment_type === 'daily' ? 'Diario' : 'Semanal'}
+                      <span className="font-semibold text-slate-800 dark:text-slate-200">Tipo:</span> {employee.payment_type === 'daily' ? 'Diario' : 'Semanal'}
                     </div>
                     <div>
-                      <span className="font-semibold">Sueldo:</span> ${employee.base_salary.toFixed(2)}
+                      <span className="font-semibold text-slate-800 dark:text-slate-200">Sueldo:</span> ${employee.base_salary.toFixed(2)}
                     </div>
                   </div>
                 </div>
                 <div className="flex gap-2">
                   <button
                     onClick={() => handleEdit(employee)}
-                    className="p-2 bg-blue-100 hover:bg-blue-200 text-blue-600 rounded-lg transition-colors"
+                    className="p-2 bg-blue-100 dark:bg-blue-900/30 hover:bg-blue-200 dark:hover:bg-blue-900/50 text-blue-600 dark:text-blue-400 rounded-lg transition-colors"
                   >
                     <Edit2 className="w-5 h-5" />
                   </button>
                   <button
                     onClick={() => handleDeactivate(employee)}
-                    className="p-2 bg-red-100 hover:bg-red-200 text-red-600 rounded-lg transition-colors"
+                    className="p-2 bg-red-100 dark:bg-red-900/30 hover:bg-red-200 dark:hover:bg-red-900/50 text-red-600 dark:text-red-400 rounded-lg transition-colors"
                   >
                     <Trash2 className="w-5 h-5" />
                   </button>
@@ -348,7 +348,7 @@ export default function EmployeeManagement() {
               </div>
             ))}
             {filteredEmployees.length === 0 && (
-              <div className="bg-white rounded-xl shadow-md p-12 text-center">
+              <div className="bg-white dark:bg-slate-800 rounded-xl shadow-md p-12 text-center border border-slate-100 dark:border-slate-700">
                 <p className="text-xl text-slate-500">No se encontraron empleados</p>
               </div>
             )}

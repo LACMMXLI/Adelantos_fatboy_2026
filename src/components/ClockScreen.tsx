@@ -177,28 +177,28 @@ export default function ClockScreen({ onAdminAccess, onCashAccess }: ClockScreen
   }, [pin]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 flex flex-col">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 flex flex-col transition-colors duration-300">
       <div className="absolute top-4 right-4 flex gap-2">
         <button
           onClick={onCashAccess}
-          className="p-3 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
+          className="p-3 bg-white dark:bg-slate-800 rounded-lg shadow-md hover:shadow-lg transition-all"
           title="Caja - Adelantos"
         >
           <DollarSign className="w-6 h-6 text-green-600" />
         </button>
         <button
           onClick={onAdminAccess}
-          className="p-3 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
+          className="p-3 bg-white dark:bg-slate-800 rounded-lg shadow-md hover:shadow-lg transition-all"
           title="Panel Administrador"
         >
-          <Settings className="w-6 h-6 text-slate-600" />
+          <Settings className="w-6 h-6 text-slate-600 dark:text-slate-400" />
         </button>
       </div>
 
       <div className="flex-1 flex items-center justify-center p-8">
         <div className="w-full max-w-2xl">
           {message ? (
-            <div className="bg-white rounded-2xl shadow-2xl p-12 text-center">
+            <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl p-12 text-center border border-slate-100 dark:border-slate-700">
               {message.type === 'success' ? (
                 <CheckCircle className="w-32 h-32 text-green-500 mx-auto mb-6" />
               ) : (
@@ -208,15 +208,15 @@ export default function ClockScreen({ onAdminAccess, onCashAccess }: ClockScreen
                 {message.text}
               </h2>
               {message.employee && (
-                <p className="text-2xl text-slate-700">{message.employee}</p>
+                <p className="text-2xl text-slate-700 dark:text-slate-300">{message.employee}</p>
               )}
             </div>
           ) : showOptions && selectedEmployee ? (
-            <div className="bg-white rounded-2xl shadow-2xl p-12">
-              <h2 className="text-3xl font-bold text-center mb-8 text-slate-800">
+            <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl p-12 border border-slate-100 dark:border-slate-700">
+              <h2 className="text-3xl font-bold text-center mb-8 text-slate-800 dark:text-white">
                 {selectedEmployee.name}
               </h2>
-              <p className="text-xl text-center mb-8 text-slate-600">
+              <p className="text-xl text-center mb-8 text-slate-600 dark:text-slate-400">
                 Selecciona la acción a registrar:
               </p>
               <div className="grid grid-cols-2 gap-4">
@@ -252,27 +252,27 @@ export default function ClockScreen({ onAdminAccess, onCashAccess }: ClockScreen
               </div>
               <button
                 onClick={handleClear}
-                className="w-full mt-4 p-4 bg-slate-200 hover:bg-slate-300 text-slate-800 rounded-xl text-lg font-semibold transition-colors"
+                className="w-full mt-4 p-4 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-800 dark:text-white rounded-xl text-lg font-semibold transition-colors"
               >
                 Cancelar
               </button>
             </div>
           ) : (
-            <div className="bg-white rounded-2xl shadow-2xl p-12">
-              <h1 className="text-4xl font-bold text-center mb-12 text-slate-800">
+            <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl p-12 border border-slate-100 dark:border-slate-700">
+              <h1 className="text-4xl font-bold text-center mb-12 text-slate-800 dark:text-white">
                 Reloj Checador
               </h1>
 
               <div className="mb-8">
-                <p className="text-xl text-center mb-4 text-slate-600">Ingresa tu PIN:</p>
+                <p className="text-xl text-center mb-4 text-slate-600 dark:text-slate-400">Ingresa tu PIN:</p>
                 <div className="flex justify-center gap-3 mb-8">
                   {[...Array(4)].map((_, i) => (
                     <div
                       key={i}
                       className={`w-16 h-16 rounded-lg border-4 flex items-center justify-center text-3xl font-bold ${
                         pin.length > i
-                          ? 'border-blue-500 bg-blue-50 text-blue-600'
-                          : 'border-slate-300 bg-slate-50'
+                          ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400'
+                          : 'border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900/50'
                       }`}
                     >
                       {pin.length > i ? '●' : ''}
@@ -287,7 +287,7 @@ export default function ClockScreen({ onAdminAccess, onCashAccess }: ClockScreen
                     key={num}
                     onClick={() => handleNumberClick(num.toString())}
                     disabled={loading}
-                    className="p-6 bg-slate-100 hover:bg-slate-200 rounded-xl text-3xl font-bold text-slate-800 transition-colors disabled:opacity-50"
+                    className="p-6 bg-slate-100 dark:bg-slate-700/50 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-xl text-3xl font-bold text-slate-800 dark:text-white transition-colors disabled:opacity-50"
                   >
                     {num}
                   </button>
@@ -295,14 +295,14 @@ export default function ClockScreen({ onAdminAccess, onCashAccess }: ClockScreen
                 <button
                   onClick={handleClear}
                   disabled={loading}
-                  className="p-6 bg-red-100 hover:bg-red-200 rounded-xl text-xl font-bold text-red-600 transition-colors"
+                  className="p-6 bg-red-100 dark:bg-red-900/30 hover:bg-red-200 dark:hover:bg-red-900/50 rounded-xl text-xl font-bold text-red-600 dark:text-red-400 transition-colors"
                 >
                   Borrar
                 </button>
                 <button
                   onClick={() => handleNumberClick('0')}
                   disabled={loading}
-                  className="p-6 bg-slate-100 hover:bg-slate-200 rounded-xl text-3xl font-bold text-slate-800 transition-colors disabled:opacity-50"
+                  className="p-6 bg-slate-100 dark:bg-slate-700/50 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-xl text-3xl font-bold text-slate-800 dark:text-white transition-colors disabled:opacity-50"
                 >
                   0
                 </button>

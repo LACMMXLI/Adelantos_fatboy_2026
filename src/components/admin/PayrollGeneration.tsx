@@ -261,19 +261,19 @@ export default function PayrollGeneration() {
 
   return (
     <div className="p-6 max-w-7xl mx-auto">
-      <h2 className="text-2xl font-bold text-slate-800 mb-6">Generación de Nómina</h2>
+      <h2 className="text-2xl font-bold text-slate-800 dark:text-white mb-6">Generación de Nómina</h2>
 
-      <div className="bg-white rounded-xl shadow-md p-6 mb-6">
-        <h3 className="text-lg font-semibold text-slate-800 mb-4">Configuración del Periodo</h3>
+      <div className="bg-white dark:bg-slate-800 rounded-xl shadow-md p-6 mb-6 border border-slate-100 dark:border-slate-700">
+        <h3 className="text-lg font-semibold text-slate-800 dark:text-white mb-4">Configuración del Periodo</h3>
         <div className="grid grid-cols-4 gap-4">
           <div>
-            <label className="block text-sm font-semibold text-slate-700 mb-2">
+            <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
               Sucursal *
             </label>
             <select
               value={selectedBranch}
               onChange={(e) => setSelectedBranch(e.target.value)}
-              className="w-full px-4 py-2 border-2 border-slate-300 rounded-lg focus:border-blue-500 focus:outline-none"
+              className="w-full px-4 py-2 border-2 border-slate-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg focus:border-blue-500 focus:outline-none"
             >
               <option value="">Seleccionar...</option>
               {branches.map(branch => (
@@ -282,38 +282,38 @@ export default function PayrollGeneration() {
             </select>
           </div>
           <div>
-            <label className="block text-sm font-semibold text-slate-700 mb-2">
+            <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
               Tipo de Periodo *
             </label>
             <select
               value={periodType}
               onChange={(e) => setPeriodType(e.target.value as 'weekly' | 'biweekly')}
-              className="w-full px-4 py-2 border-2 border-slate-300 rounded-lg focus:border-blue-500 focus:outline-none"
+              className="w-full px-4 py-2 border-2 border-slate-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg focus:border-blue-500 focus:outline-none"
             >
               <option value="weekly">Semanal (7 días)</option>
               <option value="biweekly">Quincenal (14 días)</option>
             </select>
           </div>
           <div>
-            <label className="block text-sm font-semibold text-slate-700 mb-2">
+            <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
               Fecha Inicio *
             </label>
             <input
               type="date"
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
-              className="w-full px-4 py-2 border-2 border-slate-300 rounded-lg focus:border-blue-500 focus:outline-none"
+              className="w-full px-4 py-2 border-2 border-slate-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg focus:border-blue-500 focus:outline-none"
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold text-slate-700 mb-2">
+            <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
               Fecha Fin
             </label>
             <input
               type="date"
               value={endDate}
               readOnly
-              className="w-full px-4 py-2 border-2 border-slate-200 rounded-lg bg-slate-50"
+              className="w-full px-4 py-2 border-2 border-slate-200 dark:border-slate-700 rounded-lg bg-slate-50 dark:bg-slate-900/50 dark:text-slate-400"
             />
           </div>
         </div>
@@ -346,54 +346,54 @@ export default function PayrollGeneration() {
 
           <div className="space-y-4">
             {calculations.map((calc, index) => (
-              <div key={calc.employee.id} className="bg-white rounded-xl shadow-md p-6">
+              <div key={calc.employee.id} className="bg-white dark:bg-slate-800 rounded-xl shadow-md p-6 border border-slate-100 dark:border-slate-700">
                 <div className="flex justify-between items-start mb-4">
                   <div>
-                    <h3 className="text-xl font-bold text-slate-800">{calc.employee.name}</h3>
-                    <p className="text-slate-600">{calc.employee.position}</p>
+                    <h3 className="text-xl font-bold text-slate-800 dark:text-white">{calc.employee.name}</h3>
+                    <p className="text-slate-600 dark:text-slate-400">{calc.employee.position}</p>
                   </div>
                   <div className="text-right">
-                    <p className="text-2xl font-bold text-blue-600">${calc.total_to_pay.toFixed(2)}</p>
-                    <p className="text-sm text-slate-500">Total a pagar</p>
+                    <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">${calc.total_to_pay.toFixed(2)}</p>
+                    <p className="text-sm text-slate-500 dark:text-slate-500">Total a pagar</p>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-4 gap-4 mb-4">
-                  <div className="bg-slate-50 rounded-lg p-3">
-                    <p className="text-xs text-slate-600 mb-1">Sueldo Base</p>
-                    <p className="text-lg font-bold text-slate-800">${calc.base_salary.toFixed(2)}</p>
+                  <div className="bg-slate-50 dark:bg-slate-900/50 rounded-lg p-3">
+                    <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">Sueldo Base</p>
+                    <p className="text-lg font-bold text-slate-800 dark:text-slate-200">${calc.base_salary.toFixed(2)}</p>
                   </div>
-                  <div className="bg-slate-50 rounded-lg p-3">
-                    <p className="text-xs text-slate-600 mb-1">Días Trabajados</p>
-                    <p className="text-lg font-bold text-slate-800">{calc.days_worked}</p>
+                  <div className="bg-slate-50 dark:bg-slate-900/50 rounded-lg p-3">
+                    <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">Días Trabajados</p>
+                    <p className="text-lg font-bold text-slate-800 dark:text-slate-200">{calc.days_worked}</p>
                   </div>
-                  <div className="bg-red-50 rounded-lg p-3">
-                    <p className="text-xs text-red-600 mb-1">Adelantos</p>
-                    <p className="text-lg font-bold text-red-600">-${calc.total_advances.toFixed(2)}</p>
+                  <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-3">
+                    <p className="text-xs text-red-600 dark:text-red-400 mb-1">Adelantos</p>
+                    <p className="text-lg font-bold text-red-600 dark:text-red-400">-${calc.total_advances.toFixed(2)}</p>
                   </div>
-                  <div className="bg-orange-50 rounded-lg p-3">
-                    <p className="text-xs text-orange-600 mb-1">Descuentos</p>
-                    <p className="text-lg font-bold text-orange-600">-${calc.manual_deductions.toFixed(2)}</p>
+                  <div className="bg-orange-50 dark:bg-orange-900/20 rounded-lg p-3">
+                    <p className="text-xs text-orange-600 dark:text-orange-400 mb-1">Descuentos</p>
+                    <p className="text-lg font-bold text-orange-600 dark:text-orange-400">-${calc.manual_deductions.toFixed(2)}</p>
                   </div>
                 </div>
 
                 {(calc.absences.length > 0 || calc.incomplete_records.length > 0) && (
-                  <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-4">
+                  <div className="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-400 p-4 mb-4">
                     <div className="flex items-start gap-2">
-                      <AlertTriangle className="w-5 h-5 text-yellow-600 flex-shrink-0 mt-0.5" />
+                      <AlertTriangle className="w-5 h-5 text-yellow-600 dark:text-yellow-400 flex-shrink-0 mt-0.5" />
                       <div className="flex-1">
-                        <p className="font-semibold text-yellow-800 mb-2">Alertas</p>
+                        <p className="font-semibold text-yellow-800 dark:text-yellow-200 mb-2">Alertas</p>
                         {calc.absences.length > 0 && (
                           <div className="mb-2">
-                            <p className="text-sm font-semibold text-yellow-700">Faltas detectadas ({calc.absences.length}):</p>
-                            <p className="text-sm text-yellow-700">{calc.absences.join(', ')}</p>
+                            <p className="text-sm font-semibold text-yellow-700 dark:text-yellow-400">Faltas detectadas ({calc.absences.length}):</p>
+                            <p className="text-sm text-yellow-700 dark:text-yellow-500">{calc.absences.join(', ')}</p>
                           </div>
                         )}
                         {calc.incomplete_records.length > 0 && (
                           <div>
-                            <p className="text-sm font-semibold text-yellow-700">Registros incompletos:</p>
+                            <p className="text-sm font-semibold text-yellow-700 dark:text-yellow-400">Registros incompletos:</p>
                             {calc.incomplete_records.map((rec, i) => (
-                              <p key={i} className="text-sm text-yellow-700">{rec}</p>
+                              <p key={i} className="text-sm text-yellow-700 dark:text-yellow-500">{rec}</p>
                             ))}
                           </div>
                         )}
@@ -403,11 +403,11 @@ export default function PayrollGeneration() {
                 )}
 
                 {calc.absences.length > 0 && (
-                  <div className="border-t pt-4">
-                    <p className="font-semibold text-slate-800 mb-3">Descuento Manual por Faltas</p>
+                  <div className="border-t dark:border-slate-700 pt-4">
+                    <p className="font-semibold text-slate-800 dark:text-slate-200 mb-3">Descuento Manual por Faltas</p>
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-semibold text-slate-700 mb-2">
+                        <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
                           Monto del Descuento
                         </label>
                         <input
@@ -416,19 +416,19 @@ export default function PayrollGeneration() {
                           min="0"
                           value={calc.manual_deductions || ''}
                           onChange={(e) => updateDeduction(index, parseFloat(e.target.value) || 0, calc.deduction_reason)}
-                          className="w-full px-4 py-2 border-2 border-slate-300 rounded-lg focus:border-blue-500 focus:outline-none"
+                          className="w-full px-4 py-2 border-2 border-slate-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg focus:border-blue-500 focus:outline-none"
                           placeholder="0.00"
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-semibold text-slate-700 mb-2">
+                        <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
                           Motivo (opcional)
                         </label>
                         <input
                           type="text"
                           value={calc.deduction_reason}
                           onChange={(e) => updateDeduction(index, calc.manual_deductions, e.target.value)}
-                          className="w-full px-4 py-2 border-2 border-slate-300 rounded-lg focus:border-blue-500 focus:outline-none"
+                          className="w-full px-4 py-2 border-2 border-slate-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg focus:border-blue-500 focus:outline-none"
                           placeholder="Ej: Descuento por 2 faltas"
                         />
                       </div>
@@ -442,29 +442,29 @@ export default function PayrollGeneration() {
       )}
 
       {showConfirmation && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-2xl w-full">
-            <h3 className="text-2xl font-bold text-slate-800 mb-4">Confirmar Nómina</h3>
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[70] p-4">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl p-8 max-w-2xl w-full border border-slate-100 dark:border-slate-700">
+            <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-4">Confirmar Nómina</h3>
             <div className="mb-6">
-              <div className="bg-blue-50 rounded-lg p-4 mb-4">
+              <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4 mb-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <p className="text-sm text-slate-600">Periodo</p>
-                    <p className="font-semibold text-slate-800">
+                    <p className="text-sm text-slate-600 dark:text-slate-400">Periodo</p>
+                    <p className="font-semibold text-slate-800 dark:text-slate-200">
                       {new Date(startDate).toLocaleDateString('es-MX')} - {new Date(endDate).toLocaleDateString('es-MX')}
                     </p>
                   </div>
                   <div>
-                    <p className="text-sm text-slate-600">Total de Empleados</p>
-                    <p className="font-semibold text-slate-800">{calculations.length}</p>
+                    <p className="text-sm text-slate-600 dark:text-slate-400">Total de Empleados</p>
+                    <p className="font-semibold text-slate-800 dark:text-slate-200">{calculations.length}</p>
                   </div>
                   <div className="col-span-2">
-                    <p className="text-sm text-slate-600">Total a Pagar</p>
-                    <p className="text-3xl font-bold text-blue-600">${totalToPay.toFixed(2)}</p>
+                    <p className="text-sm text-slate-600 dark:text-slate-400">Total a Pagar</p>
+                    <p className="text-3xl font-bold text-blue-600 dark:text-blue-400">${totalToPay.toFixed(2)}</p>
                   </div>
                 </div>
               </div>
-              <p className="text-slate-600">
+              <p className="text-slate-600 dark:text-slate-400">
                 ¿Estás seguro de que deseas guardar esta nómina? Una vez guardada, se registrará en el sistema.
               </p>
             </div>
@@ -479,7 +479,7 @@ export default function PayrollGeneration() {
               <button
                 onClick={() => setShowConfirmation(false)}
                 disabled={saving}
-                className="flex-1 px-6 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-lg font-bold transition-colors"
+                className="flex-1 px-6 py-3 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-300 rounded-lg font-bold transition-colors"
               >
                 Cancelar
               </button>

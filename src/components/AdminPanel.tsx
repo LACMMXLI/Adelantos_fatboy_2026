@@ -24,8 +24,8 @@ export default function AdminPanel({ onExit }: AdminPanelProps) {
   ];
 
   return (
-    <div className="fixed inset-0 bg-slate-900 flex flex-col z-50">
-      <div className="bg-blue-600 text-white p-6 flex justify-between items-center">
+    <div className="fixed inset-0 bg-slate-900 dark:bg-black flex flex-col z-50 transition-colors duration-300">
+      <div className="bg-blue-600 dark:bg-blue-900 text-white p-6 flex justify-between items-center">
         <h1 className="text-3xl font-bold">Panel Administrador</h1>
         <button
           onClick={onExit}
@@ -35,7 +35,7 @@ export default function AdminPanel({ onExit }: AdminPanelProps) {
         </button>
       </div>
 
-      <div className="bg-white border-b">
+      <div className="bg-white dark:bg-slate-800 border-b dark:border-slate-700">
         <div className="flex overflow-x-auto">
           {tabs.map(tab => {
             const Icon = tab.icon;
@@ -45,8 +45,8 @@ export default function AdminPanel({ onExit }: AdminPanelProps) {
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center gap-2 px-6 py-4 font-semibold transition-colors whitespace-nowrap ${
                   activeTab === tab.id
-                    ? 'bg-blue-50 text-blue-600 border-b-4 border-blue-600'
-                    : 'text-slate-600 hover:bg-slate-50'
+                    ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 border-b-4 border-blue-600 dark:border-blue-400'
+                    : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700/50'
                 }`}
               >
                 <Icon className="w-5 h-5" />
@@ -57,7 +57,7 @@ export default function AdminPanel({ onExit }: AdminPanelProps) {
         </div>
       </div>
 
-      <div className="flex-1 overflow-auto bg-slate-50">
+      <div className="flex-1 overflow-auto bg-slate-50 dark:bg-slate-900">
         {activeTab === 'branches' && <BranchManagement />}
         {activeTab === 'employees' && <EmployeeManagement />}
         {activeTab === 'advances' && <AdvancesView />}

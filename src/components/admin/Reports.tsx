@@ -192,12 +192,12 @@ export default function Reports() {
 
   return (
     <div className="p-6 max-w-7xl mx-auto">
-      <h2 className="text-2xl font-bold text-slate-800 mb-6">Reportes</h2>
+      <h2 className="text-2xl font-bold text-slate-800 dark:text-white mb-6">Reportes</h2>
 
-      <div className="bg-white rounded-xl shadow-md p-6 mb-6">
+      <div className="bg-white dark:bg-slate-800 rounded-xl shadow-md p-6 mb-6 border border-slate-100 dark:border-slate-700">
         <div className="grid grid-cols-3 gap-4 mb-4">
           <div className="col-span-3">
-            <label className="block text-sm font-semibold text-slate-700 mb-2">
+            <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
               Tipo de Reporte
             </label>
             <div className="grid grid-cols-3 gap-4">
@@ -205,8 +205,8 @@ export default function Reports() {
                 onClick={() => setReportType('attendance')}
                 className={`p-4 rounded-lg border-2 transition-colors ${
                   reportType === 'attendance'
-                    ? 'border-blue-500 bg-blue-50 text-blue-700'
-                    : 'border-slate-300 hover:border-slate-400'
+                    ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400'
+                    : 'border-slate-300 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-500 text-slate-600 dark:text-slate-400'
                 }`}
               >
                 <FileText className="w-6 h-6 mx-auto mb-2" />
@@ -216,8 +216,8 @@ export default function Reports() {
                 onClick={() => setReportType('advances')}
                 className={`p-4 rounded-lg border-2 transition-colors ${
                   reportType === 'advances'
-                    ? 'border-blue-500 bg-blue-50 text-blue-700'
-                    : 'border-slate-300 hover:border-slate-400'
+                    ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400'
+                    : 'border-slate-300 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-500 text-slate-600 dark:text-slate-400'
                 }`}
               >
                 <FileText className="w-6 h-6 mx-auto mb-2" />
@@ -227,8 +227,8 @@ export default function Reports() {
                 onClick={() => setReportType('payroll')}
                 className={`p-4 rounded-lg border-2 transition-colors ${
                   reportType === 'payroll'
-                    ? 'border-blue-500 bg-blue-50 text-blue-700'
-                    : 'border-slate-300 hover:border-slate-400'
+                    ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400'
+                    : 'border-slate-300 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-500 text-slate-600 dark:text-slate-400'
                 }`}
               >
                 <FileText className="w-6 h-6 mx-auto mb-2" />
@@ -238,7 +238,7 @@ export default function Reports() {
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-slate-700 mb-2">
+            <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
               Sucursal (opcional)
             </label>
             <select
@@ -247,7 +247,7 @@ export default function Reports() {
                 setSelectedBranch(e.target.value);
                 setSelectedEmployee('');
               }}
-              className="w-full px-4 py-2 border-2 border-slate-300 rounded-lg focus:border-blue-500 focus:outline-none"
+              className="w-full px-4 py-2 border-2 border-slate-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg focus:border-blue-500 focus:outline-none"
             >
               <option value="">Todas</option>
               {branches.map(branch => (
@@ -257,14 +257,14 @@ export default function Reports() {
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-slate-700 mb-2">
+            <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
               Empleado (opcional)
             </label>
             <select
               value={selectedEmployee}
               onChange={(e) => setSelectedEmployee(e.target.value)}
               disabled={!selectedBranch}
-              className="w-full px-4 py-2 border-2 border-slate-300 rounded-lg focus:border-blue-500 focus:outline-none disabled:bg-slate-100"
+              className="w-full px-4 py-2 border-2 border-slate-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg focus:border-blue-500 focus:outline-none disabled:bg-slate-100 dark:disabled:bg-slate-900/50 dark:disabled:text-slate-500"
             >
               <option value="">Todos</option>
               {employees.map(employee => (
@@ -274,26 +274,26 @@ export default function Reports() {
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-slate-700 mb-2">
+            <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
               Fecha Inicio *
             </label>
             <input
               type="date"
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
-              className="w-full px-4 py-2 border-2 border-slate-300 rounded-lg focus:border-blue-500 focus:outline-none"
+              className="w-full px-4 py-2 border-2 border-slate-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg focus:border-blue-500 focus:outline-none"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-slate-700 mb-2">
+            <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
               Fecha Fin *
             </label>
             <input
               type="date"
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
-              className="w-full px-4 py-2 border-2 border-slate-300 rounded-lg focus:border-blue-500 focus:outline-none"
+              className="w-full px-4 py-2 border-2 border-slate-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg focus:border-blue-500 focus:outline-none"
             />
           </div>
         </div>
@@ -319,59 +319,59 @@ export default function Reports() {
       </div>
 
       {reportData.length > 0 && (
-        <div className="bg-white rounded-xl shadow-md overflow-hidden">
+        <div className="bg-white dark:bg-slate-800 rounded-xl shadow-md overflow-hidden border border-slate-100 dark:border-slate-700">
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-slate-100">
+              <thead className="bg-slate-100 dark:bg-slate-900/50">
                 <tr>
                   {reportType === 'attendance' && (
                     <>
-                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700">Fecha/Hora</th>
-                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700">Empleado</th>
-                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700">Sucursal</th>
-                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700">Tipo</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700 dark:text-slate-300">Fecha/Hora</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700 dark:text-slate-300">Empleado</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700 dark:text-slate-300">Sucursal</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700 dark:text-slate-300">Tipo</th>
                     </>
                   )}
                   {reportType === 'advances' && (
                     <>
-                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700">Fecha/Hora</th>
-                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700">Empleado</th>
-                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700">Sucursal</th>
-                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700">Monto</th>
-                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700">Motivo</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700 dark:text-slate-300">Fecha/Hora</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700 dark:text-slate-300">Empleado</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700 dark:text-slate-300">Sucursal</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700 dark:text-slate-300">Monto</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700 dark:text-slate-300">Motivo</th>
                     </>
                   )}
                   {reportType === 'payroll' && (
                     <>
-                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700">Periodo</th>
-                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700">Empleado</th>
-                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700">Sucursal</th>
-                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700">Sueldo Base</th>
-                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700">Días</th>
-                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700">Adelantos</th>
-                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700">Descuentos</th>
-                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700">Total</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700 dark:text-slate-300">Periodo</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700 dark:text-slate-300">Empleado</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700 dark:text-slate-300">Sucursal</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700 dark:text-slate-300">Sueldo Base</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700 dark:text-slate-300">Días</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700 dark:text-slate-300">Adelantos</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700 dark:text-slate-300">Descuentos</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-slate-700 dark:text-slate-300">Total</th>
                     </>
                   )}
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-200">
+              <tbody className="divide-y divide-slate-200 dark:divide-slate-700">
                 {reportType === 'attendance' && (reportData as (AttendanceRecord & { employees?: Employee; branches?: Branch })[]).map(record => (
-                  <tr key={record.id} className="hover:bg-slate-50">
-                    <td className="px-6 py-4 text-sm text-slate-900">
+                  <tr key={record.id} className="hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                    <td className="px-6 py-4 text-sm text-slate-900 dark:text-slate-300">
                       {new Date(record.recorded_at).toLocaleString('es-MX')}
                     </td>
-                    <td className="px-6 py-4 text-sm font-semibold text-slate-900">
+                    <td className="px-6 py-4 text-sm font-semibold text-slate-900 dark:text-white">
                       {record.employees?.name}
                     </td>
-                    <td className="px-6 py-4 text-sm text-slate-700">
+                    <td className="px-6 py-4 text-sm text-slate-700 dark:text-slate-400">
                       {record.branches?.name}
                     </td>
                     <td className="px-6 py-4 text-sm">
                       <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                        record.record_type === 'entry' ? 'bg-green-100 text-green-700' :
-                        record.record_type === 'exit' ? 'bg-orange-100 text-orange-700' :
-                        'bg-blue-100 text-blue-700'
+                        record.record_type === 'entry' ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400' :
+                        record.record_type === 'exit' ? 'bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400' :
+                        'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400'
                       }`}>
                         {getRecordTypeName(record.record_type)}
                       </span>
@@ -380,49 +380,49 @@ export default function Reports() {
                 ))}
 
                 {reportType === 'advances' && (reportData as (SalaryAdvance & { employees?: Employee; branches?: Branch })[]).map(record => (
-                  <tr key={record.id} className="hover:bg-slate-50">
-                    <td className="px-6 py-4 text-sm text-slate-900">
+                  <tr key={record.id} className="hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                    <td className="px-6 py-4 text-sm text-slate-900 dark:text-slate-300">
                       {new Date(record.recorded_at).toLocaleString('es-MX')}
                     </td>
-                    <td className="px-6 py-4 text-sm font-semibold text-slate-900">
+                    <td className="px-6 py-4 text-sm font-semibold text-slate-900 dark:text-white">
                       {record.employees?.name}
                     </td>
-                    <td className="px-6 py-4 text-sm text-slate-700">
+                    <td className="px-6 py-4 text-sm text-slate-700 dark:text-slate-400">
                       {record.branches?.name}
                     </td>
-                    <td className="px-6 py-4 text-sm font-bold text-green-600">
+                    <td className="px-6 py-4 text-sm font-bold text-green-600 dark:text-green-400">
                       ${record.amount.toFixed(2)}
                     </td>
-                    <td className="px-6 py-4 text-sm text-slate-600">
+                    <td className="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">
                       {record.reason || '-'}
                     </td>
                   </tr>
                 ))}
 
                 {reportType === 'payroll' && (reportData as PayrollWithEmployee[]).map(record => (
-                  <tr key={record.id} className="hover:bg-slate-50">
-                    <td className="px-6 py-4 text-sm text-slate-900">
+                  <tr key={record.id} className="hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                    <td className="px-6 py-4 text-sm text-slate-900 dark:text-slate-300">
                       {new Date(record.period_start).toLocaleDateString('es-MX')} - {new Date(record.period_end).toLocaleDateString('es-MX')}
                     </td>
-                    <td className="px-6 py-4 text-sm font-semibold text-slate-900">
+                    <td className="px-6 py-4 text-sm font-semibold text-slate-900 dark:text-white">
                       {record.employees?.name}
                     </td>
-                    <td className="px-6 py-4 text-sm text-slate-700">
+                    <td className="px-6 py-4 text-sm text-slate-700 dark:text-slate-400">
                       {record.employees?.branches?.name}
                     </td>
-                    <td className="px-6 py-4 text-sm text-slate-900">
+                    <td className="px-6 py-4 text-sm text-slate-900 dark:text-slate-300">
                       ${record.base_salary.toFixed(2)}
                     </td>
-                    <td className="px-6 py-4 text-sm text-slate-900">
+                    <td className="px-6 py-4 text-sm text-slate-900 dark:text-slate-300">
                       {record.days_worked}
                     </td>
-                    <td className="px-6 py-4 text-sm text-red-600">
+                    <td className="px-6 py-4 text-sm text-red-600 dark:text-red-400">
                       ${record.total_advances.toFixed(2)}
                     </td>
-                    <td className="px-6 py-4 text-sm text-orange-600">
+                    <td className="px-6 py-4 text-sm text-orange-600 dark:text-orange-400">
                       ${record.manual_deductions.toFixed(2)}
                     </td>
-                    <td className="px-6 py-4 text-sm font-bold text-blue-600">
+                    <td className="px-6 py-4 text-sm font-bold text-blue-600 dark:text-blue-400">
                       ${record.total_to_pay.toFixed(2)}
                     </td>
                   </tr>
