@@ -15,6 +15,14 @@ export default function ClockScreen({ onAdminAccess, onCashAccess }: ClockScreen
   const [showOptions, setShowOptions] = useState(false);
   const [selectedEmployee, setSelectedEmployee] = useState<Employee | null>(null);
   const [lastRecord, setLastRecord] = useState<AttendanceRecord | null>(null);
+  const [currentTime, setCurrentTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
 
   useEffect(() => {
     if (message) {
@@ -90,8 +98,14 @@ export default function ClockScreen({ onAdminAccess, onCashAccess }: ClockScreen
       if (error) throw error;
 
       const now = new Date();
-      const timeStr = now.toLocaleTimeString('es-MX', { hour: '2-digit', minute: '2-digit' });
-      const dateStr = now.toLocaleDateString('es-MX');
+      const timeStr = now.toLocaleTimeString('es-MX', { 
+        timeZone: 'America/Tijuana',
+        hour: '2-digit', 
+        minute: '2-digit' 
+      });
+      const dateStr = now.toLocaleDateString('es-MX', {
+        timeZone: 'America/Tijuana'
+      });
 
       setMessage({
         type: 'success',
@@ -259,9 +273,30 @@ export default function ClockScreen({ onAdminAccess, onCashAccess }: ClockScreen
             </div>
           ) : (
             <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl p-6 sm:p-12 border border-slate-100 dark:border-slate-700">
-              <h1 className="text-2xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 text-slate-800 dark:text-white">
+              <h1 className="text-2xl sm:text-4xl font-bold text-center mb-6 sm:mb-8 text-slate-800 dark:text-white">
                 Reloj Checador
               </h1>
+
+              <div className="text-center mb-8">
+                <div className="text-4xl sm:text-6xl font-mono font-bold text-blue-600 dark:text-blue-400 tabular-nums">
+                  {currentTime.toLocaleTimeString('es-MX', { 
+                    timeZone: 'America/Tijuana',
+                    hour: '2-digit', 
+                    minute: '2-digit', 
+                    second: '2-digit',
+                    hour12: true 
+                  })}
+                </div>
+                <div className="text-lg sm:text-xl text-slate-500 dark:text-slate-400 mt-2 capitalize">
+                  {currentTime.toLocaleDateString('es-MX', { 
+                    timeZone: 'America/Tijuana',
+                    weekday: 'long', 
+                    day: 'numeric', 
+                    month: 'long', 
+                    year: 'numeric' 
+                  })}
+                </div>
+              </div>
 
               <div className="mb-6 sm:mb-8">
                 <p className="text-lg sm:text-xl text-center mb-4 text-slate-600 dark:text-slate-400">Ingresa tu PIN:</p>
