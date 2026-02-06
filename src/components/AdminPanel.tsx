@@ -25,32 +25,32 @@ export default function AdminPanel({ onExit }: AdminPanelProps) {
 
   return (
     <div className="fixed inset-0 bg-slate-900 dark:bg-black flex flex-col z-50 transition-colors duration-300">
-      <div className="bg-blue-600 dark:bg-blue-900 text-white p-6 flex justify-between items-center">
-        <h1 className="text-3xl font-bold">Panel Administrador</h1>
+      <div className="bg-blue-600 dark:bg-blue-900 text-white p-4 sm:p-6 flex justify-between items-center">
+        <h1 className="text-2xl sm:text-3xl font-bold">Panel Administrador</h1>
         <button
           onClick={onExit}
-          className="p-3 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-lg transition-colors"
+          className="p-2 sm:p-3 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-lg transition-colors"
         >
-          <X className="w-8 h-8" />
+          <X className="w-6 h-6 sm:w-8 sm:h-8" />
         </button>
       </div>
 
       <div className="bg-white dark:bg-slate-800 border-b dark:border-slate-700">
-        <div className="flex overflow-x-auto">
+        <div className="flex overflow-x-auto no-scrollbar">
           {tabs.map(tab => {
             const Icon = tab.icon;
             return (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center gap-2 px-6 py-4 font-semibold transition-colors whitespace-nowrap ${
+                className={`flex items-center gap-2 px-4 sm:px-6 py-3 sm:py-4 font-semibold transition-colors whitespace-nowrap ${
                   activeTab === tab.id
                     ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 border-b-4 border-blue-600 dark:border-blue-400'
                     : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700/50'
                 }`}
               >
-                <Icon className="w-5 h-5" />
-                {tab.label}
+                <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
+                <span className="text-sm sm:text-base">{tab.label}</span>
               </button>
             );
           })}

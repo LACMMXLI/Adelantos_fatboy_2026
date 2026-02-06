@@ -260,12 +260,12 @@ export default function PayrollGeneration() {
   const totalToPay = calculations.reduce((sum, calc) => sum + calc.total_to_pay, 0);
 
   return (
-    <div className="p-6 max-w-7xl mx-auto">
+    <div className="p-4 sm:p-6 max-w-7xl mx-auto">
       <h2 className="text-2xl font-bold text-slate-800 dark:text-white mb-6">Generación de Nómina</h2>
 
-      <div className="bg-white dark:bg-slate-800 rounded-xl shadow-md p-6 mb-6 border border-slate-100 dark:border-slate-700">
+      <div className="bg-white dark:bg-slate-800 rounded-xl shadow-md p-4 sm:p-6 mb-6 border border-slate-100 dark:border-slate-700">
         <h3 className="text-lg font-semibold text-slate-800 dark:text-white mb-4">Configuración del Periodo</h3>
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <div>
             <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
               Sucursal *
@@ -320,7 +320,7 @@ export default function PayrollGeneration() {
         <button
           onClick={calculatePayroll}
           disabled={loading || !selectedBranch || !startDate}
-          className="mt-4 px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors disabled:opacity-50"
+          className="w-full sm:w-auto mt-4 px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors disabled:opacity-50"
         >
           {loading ? 'Calculando...' : 'Calcular Nómina'}
         </button>
@@ -328,16 +328,16 @@ export default function PayrollGeneration() {
 
       {calculations.length > 0 && (
         <>
-          <div className="bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl shadow-lg p-6 mb-6">
-            <div className="flex justify-between items-center">
-              <div>
-                <p className="text-lg opacity-90 mb-2">Total a Pagar</p>
-                <p className="text-4xl font-bold">${totalToPay.toFixed(2)}</p>
-                <p className="text-sm opacity-80 mt-2">{calculations.length} empleados</p>
+          <div className="bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl shadow-lg p-4 sm:p-6 mb-6">
+            <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+              <div className="text-center sm:text-left">
+                <p className="text-lg opacity-90 mb-1">Total a Pagar</p>
+                <p className="text-3xl sm:text-4xl font-bold">${totalToPay.toFixed(2)}</p>
+                <p className="text-sm opacity-80 mt-1">{calculations.length} empleados</p>
               </div>
               <button
                 onClick={() => setShowConfirmation(true)}
-                className="px-6 py-3 bg-white text-blue-600 rounded-lg font-bold hover:bg-blue-50 transition-colors"
+                className="w-full sm:w-auto px-6 py-3 bg-white text-blue-600 rounded-lg font-bold hover:bg-blue-50 transition-colors"
               >
                 Confirmar y Guardar Nómina
               </button>
@@ -346,19 +346,19 @@ export default function PayrollGeneration() {
 
           <div className="space-y-4">
             {calculations.map((calc, index) => (
-              <div key={calc.employee.id} className="bg-white dark:bg-slate-800 rounded-xl shadow-md p-6 border border-slate-100 dark:border-slate-700">
-                <div className="flex justify-between items-start mb-4">
+              <div key={calc.employee.id} className="bg-white dark:bg-slate-800 rounded-xl shadow-md p-4 sm:p-6 border border-slate-100 dark:border-slate-700">
+                <div className="flex flex-col sm:flex-row justify-between items-start mb-4 gap-2">
                   <div>
                     <h3 className="text-xl font-bold text-slate-800 dark:text-white">{calc.employee.name}</h3>
                     <p className="text-slate-600 dark:text-slate-400">{calc.employee.position}</p>
                   </div>
-                  <div className="text-right">
+                  <div className="text-left sm:text-right">
                     <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">${calc.total_to_pay.toFixed(2)}</p>
                     <p className="text-sm text-slate-500 dark:text-slate-500">Total a pagar</p>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-4 gap-4 mb-4">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-4">
                   <div className="bg-slate-50 dark:bg-slate-900/50 rounded-lg p-3">
                     <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">Sueldo Base</p>
                     <p className="text-lg font-bold text-slate-800 dark:text-slate-200">${calc.base_salary.toFixed(2)}</p>

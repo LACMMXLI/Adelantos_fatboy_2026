@@ -158,13 +158,13 @@ export default function EmployeeManagement() {
   });
 
   return (
-    <div className="p-6 max-w-7xl mx-auto">
-      <div className="flex justify-between items-center mb-6">
+    <div className="p-4 sm:p-6 max-w-7xl mx-auto">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
         <h2 className="text-2xl font-bold text-slate-800 dark:text-white">Gestión de Empleados</h2>
         {!showForm && (
           <button
             onClick={() => setShowForm(true)}
-            className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors"
+            className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors"
           >
             <Plus className="w-5 h-5" />
             Nuevo Empleado
@@ -173,11 +173,11 @@ export default function EmployeeManagement() {
       </div>
 
       {showForm && (
-        <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 mb-6 border border-slate-100 dark:border-slate-700">
+        <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-4 sm:p-6 mb-6 border border-slate-100 dark:border-slate-700">
           <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-4">
             {editingEmployee ? 'Editar Empleado' : 'Nuevo Empleado'}
           </h3>
-          <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-4">
+          <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
                 Nombre Completo *
@@ -259,18 +259,18 @@ export default function EmployeeManagement() {
                 className="w-full px-4 py-2 border-2 border-slate-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg focus:border-blue-500 focus:outline-none"
               />
             </div>
-            <div className="col-span-2 flex gap-3">
+            <div className="md:col-span-2 flex flex-col sm:flex-row gap-3">
               <button
                 type="submit"
                 disabled={loading}
-                className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors disabled:opacity-50"
+                className="w-full sm:w-auto px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors disabled:opacity-50"
               >
                 {loading ? 'Guardando...' : editingEmployee ? 'Actualizar' : 'Crear'}
               </button>
               <button
                 type="button"
                 onClick={handleCancel}
-                className="px-6 py-2 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-300 rounded-lg font-semibold transition-colors"
+                className="w-full sm:w-auto px-6 py-2 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-300 rounded-lg font-semibold transition-colors"
               >
                 Cancelar
               </button>
@@ -282,7 +282,7 @@ export default function EmployeeManagement() {
       {!showForm && (
         <>
           <div className="bg-white dark:bg-slate-800 rounded-xl shadow-md p-4 mb-6 border border-slate-100 dark:border-slate-700">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5" />
                 <input
@@ -308,15 +308,15 @@ export default function EmployeeManagement() {
 
           <div className="grid gap-4">
             {filteredEmployees.map(employee => (
-              <div key={employee.id} className="bg-white dark:bg-slate-800 rounded-xl shadow-md p-6 flex justify-between items-center border border-slate-100 dark:border-slate-700">
-                <div className="flex-1">
-                  <div className="flex items-center gap-4 mb-2">
+              <div key={employee.id} className="bg-white dark:bg-slate-800 rounded-xl shadow-md p-4 sm:p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border border-slate-100 dark:border-slate-700">
+                <div className="flex-1 w-full">
+                  <div className="flex flex-wrap items-center gap-3 mb-2">
                     <h3 className="text-xl font-bold text-slate-800 dark:text-white">{employee.name}</h3>
                     <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-full text-sm font-semibold">
                       {employee.branches?.name}
                     </span>
                   </div>
-                  <div className="grid grid-cols-4 gap-4 text-sm text-slate-600 dark:text-slate-400">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4 text-sm text-slate-600 dark:text-slate-400">
                     <div>
                       <span className="font-semibold text-slate-800 dark:text-slate-200">Puesto:</span> {employee.position || 'N/A'}
                     </div>
@@ -331,16 +331,16 @@ export default function EmployeeManagement() {
                     </div>
                   </div>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex gap-2 w-full sm:w-auto justify-end">
                   <button
                     onClick={() => handleEdit(employee)}
-                    className="p-2 bg-blue-100 dark:bg-blue-900/30 hover:bg-blue-200 dark:hover:bg-blue-900/50 text-blue-600 dark:text-blue-400 rounded-lg transition-colors"
+                    className="p-2 sm:p-2.5 bg-blue-100 dark:bg-blue-900/30 hover:bg-blue-200 dark:hover:bg-blue-900/50 text-blue-600 dark:text-blue-400 rounded-lg transition-colors"
                   >
                     <Edit2 className="w-5 h-5" />
                   </button>
                   <button
                     onClick={() => handleDeactivate(employee)}
-                    className="p-2 bg-red-100 dark:bg-red-900/30 hover:bg-red-200 dark:hover:bg-red-900/50 text-red-600 dark:text-red-400 rounded-lg transition-colors"
+                    className="p-2 sm:p-2.5 bg-red-100 dark:bg-red-900/30 hover:bg-red-200 dark:hover:bg-red-900/50 text-red-600 dark:text-red-400 rounded-lg transition-colors"
                   >
                     <Trash2 className="w-5 h-5" />
                   </button>

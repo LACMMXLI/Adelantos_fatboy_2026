@@ -106,13 +106,13 @@ export default function BranchManagement() {
   };
 
   return (
-    <div className="p-6 max-w-6xl mx-auto">
-      <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold text-slate-800">Gestión de Sucursales</h2>
+    <div className="p-4 sm:p-6 max-w-6xl mx-auto">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+        <h2 className="text-2xl font-bold text-slate-800 dark:text-white">Gestión de Sucursales</h2>
         {!showForm && (
           <button
             onClick={() => setShowForm(true)}
-            className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors"
+            className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors"
           >
             <Plus className="w-5 h-5" />
             Nueva Sucursal
@@ -121,13 +121,13 @@ export default function BranchManagement() {
       </div>
 
       {showForm && (
-        <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
-          <h3 className="text-xl font-bold text-slate-800 mb-4">
+        <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-4 sm:p-6 mb-6 border border-slate-100 dark:border-slate-700">
+          <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-4">
             {editingBranch ? 'Editar Sucursal' : 'Nueva Sucursal'}
           </h3>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-sm font-semibold text-slate-700 mb-2">
+              <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
                 Nombre de la Sucursal *
               </label>
               <input
@@ -135,12 +135,12 @@ export default function BranchManagement() {
                 required
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full px-4 py-2 border-2 border-slate-300 rounded-lg focus:border-blue-500 focus:outline-none"
+                className="w-full px-4 py-2 border-2 border-slate-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg focus:border-blue-500 focus:outline-none"
                 placeholder="Ej: Sucursal Centro"
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-slate-700 mb-2">
+              <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
                 PIN de Caja (6 dígitos) *
               </label>
               <input
@@ -150,25 +150,25 @@ export default function BranchManagement() {
                 pattern="[0-9]{6}"
                 value={formData.cash_pin}
                 onChange={(e) => setFormData({ ...formData, cash_pin: e.target.value })}
-                className="w-full px-4 py-2 border-2 border-slate-300 rounded-lg focus:border-blue-500 focus:outline-none"
+                className="w-full px-4 py-2 border-2 border-slate-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg focus:border-blue-500 focus:outline-none"
                 placeholder="123456"
               />
-              <p className="text-sm text-slate-500 mt-1">
+              <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
                 Este PIN se usará para acceder al modo caja-adelantos
               </p>
             </div>
-            <div className="flex gap-3">
+            <div className="flex flex-col sm:flex-row gap-3">
               <button
                 type="submit"
                 disabled={loading}
-                className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors disabled:opacity-50"
+                className="w-full sm:w-auto px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors disabled:opacity-50"
               >
                 {loading ? 'Guardando...' : editingBranch ? 'Actualizar' : 'Crear'}
               </button>
               <button
                 type="button"
                 onClick={handleCancel}
-                className="px-6 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-lg font-semibold transition-colors"
+                className="w-full sm:w-auto px-6 py-2 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-300 rounded-lg font-semibold transition-colors"
               >
                 Cancelar
               </button>
@@ -179,21 +179,21 @@ export default function BranchManagement() {
 
       <div className="grid gap-4">
         {branches.map(branch => (
-          <div key={branch.id} className="bg-white rounded-xl shadow-md p-6 flex justify-between items-center">
+          <div key={branch.id} className="bg-white dark:bg-slate-800 rounded-xl shadow-md p-4 sm:p-6 flex justify-between items-center border border-slate-100 dark:border-slate-700">
             <div>
-              <h3 className="text-xl font-bold text-slate-800">{branch.name}</h3>
-              <p className="text-slate-600">PIN de Caja: {branch.cash_pin}</p>
+              <h3 className="text-xl font-bold text-slate-800 dark:text-white">{branch.name}</h3>
+              <p className="text-slate-600 dark:text-slate-400">PIN de Caja: {branch.cash_pin}</p>
             </div>
             <div className="flex gap-2">
               <button
                 onClick={() => handleEdit(branch)}
-                className="p-2 bg-blue-100 hover:bg-blue-200 text-blue-600 rounded-lg transition-colors"
+                className="p-2 bg-blue-100 dark:bg-blue-900/30 hover:bg-blue-200 dark:hover:bg-blue-900/50 text-blue-600 dark:text-blue-400 rounded-lg transition-colors"
               >
                 <Edit2 className="w-5 h-5" />
               </button>
               <button
                 onClick={() => handleDelete(branch)}
-                className="p-2 bg-red-100 hover:bg-red-200 text-red-600 rounded-lg transition-colors"
+                className="p-2 bg-red-100 dark:bg-red-900/30 hover:bg-red-200 dark:hover:bg-red-900/50 text-red-600 dark:text-red-400 rounded-lg transition-colors"
               >
                 <Trash2 className="w-5 h-5" />
               </button>
@@ -201,7 +201,7 @@ export default function BranchManagement() {
           </div>
         ))}
         {branches.length === 0 && (
-          <div className="bg-white rounded-xl shadow-md p-12 text-center">
+          <div className="bg-white dark:bg-slate-800 rounded-xl shadow-md p-12 text-center border border-slate-100 dark:border-slate-700">
             <p className="text-xl text-slate-500">No hay sucursales registradas</p>
             <p className="text-slate-400 mt-2">Crea tu primera sucursal para comenzar</p>
           </div>

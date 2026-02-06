@@ -191,16 +191,16 @@ export default function Reports() {
   };
 
   return (
-    <div className="p-6 max-w-7xl mx-auto">
+    <div className="p-4 sm:p-6 max-w-7xl mx-auto">
       <h2 className="text-2xl font-bold text-slate-800 dark:text-white mb-6">Reportes</h2>
 
-      <div className="bg-white dark:bg-slate-800 rounded-xl shadow-md p-6 mb-6 border border-slate-100 dark:border-slate-700">
-        <div className="grid grid-cols-3 gap-4 mb-4">
-          <div className="col-span-3">
+      <div className="bg-white dark:bg-slate-800 rounded-xl shadow-md p-4 sm:p-6 mb-6 border border-slate-100 dark:border-slate-700">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+          <div className="md:col-span-3">
             <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
               Tipo de Reporte
             </label>
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <button
                 onClick={() => setReportType('attendance')}
                 className={`p-4 rounded-lg border-2 transition-colors ${
@@ -273,43 +273,44 @@ export default function Reports() {
             </select>
           </div>
 
-          <div>
-            <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
-              Fecha Inicio *
-            </label>
-            <input
-              type="date"
-              value={startDate}
-              onChange={(e) => setStartDate(e.target.value)}
-              className="w-full px-4 py-2 border-2 border-slate-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg focus:border-blue-500 focus:outline-none"
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
-              Fecha Fin *
-            </label>
-            <input
-              type="date"
-              value={endDate}
-              onChange={(e) => setEndDate(e.target.value)}
-              className="w-full px-4 py-2 border-2 border-slate-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg focus:border-blue-500 focus:outline-none"
-            />
+          <div className="md:col-span-1 grid grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
+                Inicio *
+              </label>
+              <input
+                type="date"
+                value={startDate}
+                onChange={(e) => setStartDate(e.target.value)}
+                className="w-full px-4 py-2 border-2 border-slate-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg focus:border-blue-500 focus:outline-none text-sm"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
+                Fin *
+              </label>
+              <input
+                type="date"
+                value={endDate}
+                onChange={(e) => setEndDate(e.target.value)}
+                className="w-full px-4 py-2 border-2 border-slate-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg focus:border-blue-500 focus:outline-none text-sm"
+              />
+            </div>
           </div>
         </div>
 
-        <div className="flex gap-4">
+        <div className="flex flex-col sm:flex-row gap-4">
           <button
             onClick={generateReport}
             disabled={loading || !startDate || !endDate}
-            className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors disabled:opacity-50"
+            className="w-full sm:w-auto px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors disabled:opacity-50"
           >
             {loading ? 'Generando...' : 'Generar Reporte'}
           </button>
           {reportData.length > 0 && (
             <button
               onClick={exportToCSV}
-              className="flex items-center gap-2 px-6 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition-colors"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition-colors"
             >
               <Download className="w-5 h-5" />
               Exportar CSV
